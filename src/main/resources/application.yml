@@ -1,0 +1,39 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:h2:mem:userdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+jwt:
+  secret: ecom-research-jwt-secret-key-that-is-long-enough-for-hmac-sha256
+  expiration: 86400000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
